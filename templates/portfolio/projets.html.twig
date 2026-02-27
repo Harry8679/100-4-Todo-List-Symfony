@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes projets{% endblock %}
+
+{% block body %}
+
+<div class="max-w-2xl mx-auto px-6 py-16">
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-8">
+        Mes projets
+    </h1>
+
+    {% for projet in projets %}
+
+        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-4">
+
+            <div class="flex items-center justify-between mb-2">
+
+                <h2 class="text-lg font-bold text-gray-900">
+                    {{ projet.titre }}
+                </h2>
+
+                {# ----------------------------------------
+                   {% if %} dans une boucle {% for %}
+                   On affiche un badge différent selon
+                   si le projet est terminé ou non
+                   ---------------------------------------- #}
+
+                {% if projet.termine %}
+
+                    <span class="bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">
+                        Terminé
+                    </span>
+
+                {% else %}
+
+                    <span class="bg-orange-100 text-orange-700 text-xs font-semibold px-3 py-1 rounded-full">
+                        En cours
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+            <p class="text-gray-500 text-sm">
+                {{ projet.description }}
+            </p>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
